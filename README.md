@@ -33,3 +33,17 @@ Além disso, o coordenador — ou seja, seu aplicativo ZigBee — está conectad
 ### ESP32 e ZigBee
 
 O ESP32 é um microcontrolador versátil que pode suportar ZigBee por meio do ESP Zigbee SDK, um framework de desenvolvimento fornecido pela Espressif. Esse SDK permite que os desenvolvedores criem produtos compatíveis com ZigBee com facilidade, oferecendo APIs simplificadas, utilitários e documentação. Alguns modelos do ESP32, como o ESP32-C6, também possuem capacidades de rádio ZigBee integradas.
+
+## Referências:
+
+https://www.watt24.com/en/guide/everything-you-need-to-know-about-zigbee/
+
+https://www.vesternet.com/en-global/pages/what-is-zigbee
+
+https://docs.espressif.com/projects/esp-zigbee-sdk/en/latest/esp32/introduction.html#esp-zigbee-sdk
+
+https://docs.espressif.com/projects/esp-idf/en/stable/esp32h2/get-started/index.html
+
+https://www.zigbee2mqtt.io/guide/installation/05_windows.html
+
+https://cedalo.com/blog/how-to-install-mosquitto-mqtt-broker-on-windows/
