@@ -38,7 +38,11 @@ O ESP32 é um microcontrolador versátil que pode suportar ZigBee por meio do ES
 
 ```
 # Após ter o repositório instalado, abra o powershell e redirecione para a pasta do zigbeemqtt
-D:\Documentos\Tcc\zigbee2mqtt> pnpm start   
+D:\Documentos\Tcc\zigbee2mqtt> pnpm start
+
+# Se tudo der certo esse será o output:
+[2025-04-20 23:11:58] info:     z2m: Started frontend on port 8080
+[2025-04-20 23:11:58] info:     z2m: Zigbee2MQTT started!       
 ```
 
 ## Referências:
