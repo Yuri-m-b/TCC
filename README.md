@@ -6,7 +6,7 @@ Neste repositorio estarei adionando os codigos relacionado ao meu tcc.
 Setup comando usados (usando Windows):
 
 Seguindo tutorial do BLINK e seu README
-
+(Abrir terminal ESP-32 da extensão do VsCode)
 PS D:\Documentos\Tcc\blink> idf.py set-target esp32h2
 
 PS D:\Documentos\Tcc\blink> idf.py menuconfig
