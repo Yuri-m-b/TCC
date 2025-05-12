@@ -60,3 +60,5 @@ https://www.zigbee2mqtt.io/guide/installation/05_windows.html
 https://cedalo.com/blog/how-to-install-mosquitto-mqtt-broker-on-windows/
 
 https://www.zigbee2mqtt.io/guide/installation/20_zigbee2mqtt-fails-to-start_crashes-runtime.html
+
+https://github.com/espressif/esp-zigbee-sdk/tree/main
