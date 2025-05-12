@@ -34,7 +34,15 @@ Além disso, o coordenador — ou seja, seu aplicativo ZigBee — está conectad
 
 O ESP32 é um microcontrolador versátil que pode suportar ZigBee por meio do ESP Zigbee SDK, um framework de desenvolvimento fornecido pela Espressif. Esse SDK permite que os desenvolvedores criem produtos compatíveis com ZigBee com facilidade, oferecendo APIs simplificadas, utilitários e documentação. Alguns modelos do ESP32, como o ESP32-C6, também possuem capacidades de rádio ZigBee integradas.
 
-### Iniciando ZigbeeMQTT
+### Buildando arquivo no ESP 32
+
+- Criar pasta com os arquivos desejados para o projeto
+- Mudar a porta configurada no VsCode para a porta do ESP32H2, geralmente COM5
+- Mudar configuração para usar esp32h2
+- `idf.py -p PORT erase-flash`
+- `idf.py -p PORT flash monitor`
+
+### Iniciando ZigbeeMQTT (Dongle)
 
 ```
 # Após ter o repositório instalado, abra o powershell e redirecione para a pasta do zigbeemqtt
