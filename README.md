@@ -53,6 +53,12 @@ D:\Documentos\Tcc\zigbee2mqtt> pnpm start
 [2025-04-20 23:11:58] info:     z2m: Zigbee2MQTT started!       
 ```
 
+## DEBUG
+
+### Parado em waiting download
+
+- Precionar o botão reset do esp32hw
+
 ## Referências:
 
 https://www.watt24.com/en/guide/everything-you-need-to-know-about-zigbee/
