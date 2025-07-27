@@ -1,15 +1,7 @@
 /*
- * SPDX-FileCopyrightText: 2024 Espressif Systems (Shanghai) CO LTD
- *
- * SPDX-License-Identifier: CC0-1.0
- *
- * Zigbee HA_temperature_sensor Example
- *
- * This example code is in the Public Domain (or CC0 licensed, at your option.)
- *
- * Unless required by applicable law or agreed to in writing, this
- * software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
- * CONDITIONS OF ANY KIND, either express or implied.
+* Custom Sensors
+* Nome: Yuri Marques Barboza
+* Bacharelado em Engenharia Eletrônica
  */
 #include "esp_zb_temperature_sensor.h"
 #include "temp_sensor_driver.h"
@@ -37,7 +29,7 @@
 #error Define ZB_ED_ROLE in idf.py menuconfig to compile sensor (End Device) source code.
 #endif
 /////////////////////////////////////////////////////////////////////////////////////
-#define ESP_ZB_DEFAULT_TEMPERATURE_SENSOR_YURI_CONFIG()                                             \
+#define ESP_ZB_DEFAULT_CUSTOM_SENSOR_CONFIG()                                                       \
     {                                                                                               \
         .basic_cfg =                                                                                \
             {                                                                                       \
@@ -261,7 +253,7 @@ esp_err_t read_temperature(i2c_master_dev_handle_t *dev_handle, float *temp_c) {
     return ESP_OK;
 }
 
-esp_err_t read_humidty(i2c_master_dev_handle_t *dev_handle, float *humidity)
+esp_err_t read_humidity(i2c_master_dev_handle_t *dev_handle, float *humidity)
 {
     esp_err_t ret;
 
@@ -288,7 +280,6 @@ esp_err_t read_humidty(i2c_master_dev_handle_t *dev_handle, float *humidity)
 static void esp_app_humidity_sensor_handler(float humidity)
 {
     int16_t measured_value = (int16_t)(humidity * 100);
-    // int16_t measured_value = humidity;
     esp_zb_lock_acquire(portMAX_DELAY);
     esp_zb_zcl_set_attribute_val(
         HA_ESP_SENSOR_ENDPOINT,
@@ -335,7 +326,7 @@ static void i2c_HTU2X_task(void *pvParameters)
         else {
             ESP_LOGE("HTU2X", "Failed to read temperature values");
         }
-        if (read_humidty(&dev_handle, &humidity) == ESP_OK) {
+        if (read_humidity(&dev_handle, &humidity) == ESP_OK) {
             ESP_LOGI("HTU2X", "Humidity: %.2f", humidity);
             esp_app_humidity_sensor_handler(humidity);
         }
@@ -388,7 +379,7 @@ static void esp_zb_task(void *pvParameters)
 
     /* Create customized temperature sensor endpoint */
     // esp_zb_temperature_sensor_cfg_t sensor_cfg = ESP_ZB_DEFAULT_TEMPERATURE_SENSOR_CONFIG();
-    custom_sensor_cfg_t sensor_cfg = ESP_ZB_DEFAULT_TEMPERATURE_SENSOR_YURI_CONFIG();
+    custom_sensor_cfg_t sensor_cfg = ESP_ZB_DEFAULT_CUSTOM_SENSOR_CONFIG();
     /* Set (Min|Max)MeasuredValure */
     sensor_cfg.temp_meas_cfg.min_value = zb_temperature_to_s16(ESP_TEMP_SENSOR_MIN_VALUE);
     sensor_cfg.temp_meas_cfg.max_value = zb_temperature_to_s16(ESP_TEMP_SENSOR_MAX_VALUE);
