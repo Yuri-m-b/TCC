@@ -175,7 +175,7 @@ void esp_zb_app_signal_handler(esp_zb_app_signal_t *signal_struct)
     }
 }
 
-static esp_zb_cluster_list_t *custom_yuri_sensors_clusters_create(custom_sensor_cfg_t *yuri_sensor)
+static esp_zb_cluster_list_t *custom_sensors_clusters_create(custom_sensor_cfg_t *yuri_sensor)
 {
     esp_zb_cluster_list_t *cluster_list = esp_zb_zcl_cluster_list_create();
     esp_zb_attribute_list_t *basic_cluster = esp_zb_basic_cluster_create(&(yuri_sensor->basic_cfg));
@@ -201,7 +201,7 @@ static esp_zb_ep_list_t *custom_sensor_yuri_ep_create(uint8_t endpoint_id, custo
         .app_device_id = ESP_ZB_HA_TEMPERATURE_SENSOR_DEVICE_ID,
         .app_device_version = 0
     };
-    esp_zb_ep_list_add_ep(ep_list, custom_yuri_sensors_clusters_create(sensor_cfg), endpoint_config);
+    esp_zb_ep_list_add_ep(ep_list, custom_sensors_clusters_create(sensor_cfg), endpoint_config);
     return ep_list;
 }
 
@@ -422,7 +422,7 @@ static void esp_zb_task(void *pvParameters)
     };
     esp_zb_zcl_update_reporting_info(&pressure_reporting_info);
 
-    /* Pressure reporting */
+    /* Humidity reporting */
     esp_zb_zcl_reporting_info_t humidity_reporting_info = {
         .direction = ESP_ZB_ZCL_CMD_DIRECTION_TO_SRV,
         .ep = HA_ESP_SENSOR_ENDPOINT,
@@ -453,8 +453,6 @@ void app_main(void)
     };
     ESP_ERROR_CHECK(nvs_flash_init());
     ESP_ERROR_CHECK(esp_zb_platform_config(&config));
-
-    i2c_scanner();
 
     /* Start Zigbee stack task */
     xTaskCreate(esp_zb_task, "Zigbee_main", 4096, NULL, 5, NULL);
